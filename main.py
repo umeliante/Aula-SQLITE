@@ -72,3 +72,10 @@ cursor = conexao.cursor()
 # print(f"Alunos do curso de {pesquisar}")
 # for linha in cursor.fetchall():
 #     print(f"NOME: {linha[0]} | IDADE: {linha[1]}")
+
+
+#Deletar dados do banco.
+cursor.execute("DELETE FROM alunos WHERE id = ?", (1,))
+conexao.commit()
+#Sempre fechar a conexão com o banco de dados
+conexao.close()
