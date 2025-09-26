@@ -34,16 +34,26 @@ cursor = conexao.cursor()
 
 
 #Iserir varios alunos de uma só vez
-alunos = [
-    ("Yago", 28, "Direito"),
-    ("Jessica", 24, "Computação"),
-    ("Breno", 54, "Computação"),
-]
-#executemany permite inserir mútiplas linhas de um vez só
-cursor.executemany("""
-INSERT INTO alunos (nome, idade, curso)
-VALUES (?, ?, ?)
-""",
-(alunos)
+# alunos = [
+#     ("Yago", 28, "Direito"),
+#     ("Jessica", 24, "Computação"),
+#     ("Breno", 54, "Computação"),
+# ]
+# #executemany permite inserir mútiplas linhas de um vez só
+# cursor.executemany("""
+# INSERT INTO alunos (nome, idade, curso)
+# VALUES (?, ?, ?)
+# """,
+# (alunos)
+# )
+# conexao.commit()
+
+
+#Atulizar dados no banco 
+cursor.execute("""
+UPDATE alunos
+SET idade = ?, curso = ?
+WHERE id = ?
+""", (61, "Medicina", 2)
 )
 conexao.commit()
